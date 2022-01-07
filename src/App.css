@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+min-height: calc(100vh - 85px);
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  font-weight: 100;
+  -webkit-box-sizing: initial;
+  -moz-box-sizing: initial;
+  box-sizing:content-box;
+
+}
