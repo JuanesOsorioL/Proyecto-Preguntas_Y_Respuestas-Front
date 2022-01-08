@@ -31,11 +31,7 @@ function App() {
   useEffect(()=>{
       app.auth().onAuthStateChanged((user)=>{
         if(user){
-          dispatch( getUserByUid(user.multiFactor.user.uid)
-            /* loggedAction(user.multiFactor.user.email ,
-              user.multiFactor.user.id,
-              user.multiFactor.user.uid,
-              user.multiFactor.user.photoURL) */)
+          dispatch( getUserByUid(user.multiFactor.user.uid))
           }
   })},[])
 

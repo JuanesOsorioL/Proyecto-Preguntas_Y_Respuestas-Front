@@ -43,9 +43,6 @@ export const Login = () => {
   e.preventDefault();
 
 
-
-
-
   if (e.target.lastChild.name==="registrar") {
   app.auth().createUserWithEmailAndPassword(formData.email,formData.password)
     .then(async user =>{
@@ -56,7 +53,7 @@ export const Login = () => {
         email:user.user.multiFactor.user.email,
         path:IMGDEFAULT
       }
-      console.log(data);
+
 
       const datosBD = await postUser(data);
       console.log("datosdb",datosBD);
@@ -70,8 +67,20 @@ export const Login = () => {
           datosBD.uid))
         navigate("/private/Home")
       }
+
+/*  toast.success("Creado Correctamente", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }); */
+
+
     })
-    .catch(error=>console.log(error))
+    .catch(error=>console.log("error",error))
 
 
 
@@ -99,7 +108,7 @@ export const Login = () => {
       navigate("/private/Home")
       }
     })
-    .catch(error=>console.log(error))
+    .catch(error=>console.log("error",error))
   }
 }
 

@@ -13,7 +13,6 @@ const FormQuestion = () => {
     const submitForm = async (e) => {
         e.preventDefault();
         const a = await postQuestion(formData)
-        console.log("llego",a);
         navigate("Question/"+a);
       }
 

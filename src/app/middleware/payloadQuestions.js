@@ -109,7 +109,6 @@ export const postUser = (data) => {
     headers: { "Content-Type": "application/json" },
     data: data,
   };
-  
   const result = axios
     .request(options)
     .then(function (response) {
@@ -122,9 +121,7 @@ export const postUser = (data) => {
 
 
 
-
-
-
+//se loguea para todo
 export const getUserByUid = (userUid) => (dispatch) => {
   const options = {
     method: "GET",
@@ -140,11 +137,26 @@ export const getUserByUid = (userUid) => (dispatch) => {
         nombre,
         path,
         uid }=response.data
-        console.log(nombre);
       dispatch(loggedAction(apellido, email, id, nombre, path, uid));
-     // dispatch(myQuestionsLoadSucces(response.data));
     })
     .catch(function (error) {
      console.log("error");
     });
+};
+
+//actualizar usuario
+export const ActualizarUser = (data) => (dispatch) => {
+  const options = {
+    method: "PUT",
+    url: "http://localhost:8080/actualizarUsuario",
+    headers: { "Content-Type": "application/json" },
+    data: data,
+  };
+  axios.request(options)
+    .then(function (response) {
+    const { apellido, email, id, nombre, path, uid } = response.data;
+    dispatch(loggedAction(apellido, email, id, nombre, path, uid));
+    })
+    .catch(function (error) {});
+
 };
