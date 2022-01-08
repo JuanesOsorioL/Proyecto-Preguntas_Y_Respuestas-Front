@@ -1,9 +1,9 @@
 import actionsTypesAuth from "./actionsTypes/ActionsTypesAuth"
 
-export const loginAction = (apellido, email, nombre, uid, path,id) => {
+export const loginAction = (apellido, email, id, nombre, path, uid) => {
   return {
     type: actionsTypesAuth.LOGIN,
-    payload: { apellido, email, nombre, uid, path, id },
+    payload: { apellido, email, id, nombre, path, uid },
   };
 };
 
@@ -14,9 +14,9 @@ export const logoutAction =()=>{
     }
 }
 
-export const loggedAction = (apellido, email, nombre, uid, path, id) => {
+export const loggedAction = (apellido, email, id, nombre, path, uid) => {
   return {
     type: actionsTypesAuth.LOGGED,
-    payload: { apellido, email, nombre, uid, path, id },
+    payload: { apellido, email, id, nombre, path, uid },
   };
 };

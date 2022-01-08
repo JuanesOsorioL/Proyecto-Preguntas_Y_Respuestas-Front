@@ -3,6 +3,9 @@ import {oneQuestionLoadSucces , oneQuestionLoadError} from "../../actions/OneQue
 import { myQuestionsLoadSucces, myQuestionsLoading,myQuestionsLoadError } from "../../actions/MyQuestionsActions";
 import axios from "axios";
 
+import { loggedAction } from "../../actions/AuthorActions";
+
+
 export const loadAllQuestion=()=>(dispatch)=>{
   
     dispatch(questionsLoading())
@@ -100,7 +103,6 @@ export const getUserQuestion=(userId)=>(dispatch)=>{
 
 //crear usuario
 export const postUser = (data) => {
-  console.log("data",data);
   const options = {
     method: "POST",
     url: "http://localhost:8080/createUsuario",
@@ -115,4 +117,34 @@ export const postUser = (data) => {
     })
     .catch(function (error) {});
   return result;
+};
+
+
+
+
+
+
+
+export const getUserByUid = (userUid) => (dispatch) => {
+  const options = {
+    method: "GET",
+    url: `http://localhost:8080/getUsuario/${userUid}`,
+    headers: { "Content-Type": "application/json" },
+  };
+  axios
+    .request(options)
+    .then(function (response) {
+      const{ apellido,
+        email,
+        id,
+        nombre,
+        path,
+        uid }=response.data
+        console.log(nombre);
+      dispatch(loggedAction(apellido, email, id, nombre, path, uid));
+     // dispatch(myQuestionsLoadSucces(response.data));
+    })
+    .catch(function (error) {
+     console.log("error");
+    });
 };

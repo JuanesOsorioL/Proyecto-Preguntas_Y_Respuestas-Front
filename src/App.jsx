@@ -20,7 +20,8 @@ import { useDispatch } from "react-redux"
 import {useEffect} from "react";
 import { Login } from './components/public/Login';
 import React from 'react';
-
+import Actualizar from './pages/private/Actualizar';
+import { getUserByUid } from './app/middleware/payloadQuestions';
 
 
 function App() {
@@ -30,10 +31,11 @@ function App() {
   useEffect(()=>{
       app.auth().onAuthStateChanged((user)=>{
         if(user){
-          dispatch(loggedAction(user.multiFactor.user.email ,
-              user.multiFactor.user.displayName,
+          dispatch( getUserByUid(user.multiFactor.user.uid)
+            /* loggedAction(user.multiFactor.user.email ,
+              user.multiFactor.user.id,
               user.multiFactor.user.uid,
-              user.multiFactor.user.photoURL))
+              user.multiFactor.user.photoURL) */)
           }
   })},[])
 
@@ -51,6 +53,7 @@ function App() {
         </Route>
           <Route path="/private" element={<PrivateLayout/>}>
             <Route path="Home" element={<HomePage/>}/>
+            <Route path="ActualizarNombre" element={<Actualizar/>}/>
             <Route path="QuestionsPage" element={<QuestionsPagePrivate/>}/>
             <Route path="Question/:id" element={<OneQuestionPagePrivate/>}/>
 

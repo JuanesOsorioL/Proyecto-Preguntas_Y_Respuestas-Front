@@ -2,7 +2,17 @@ import actionsTypesAuth from "../actions/actionsTypes/ActionsTypesAuth";
 
 const initialState = {
     user: null,
-}
+} 
+/* const initialState = {
+  apellido: null,
+  email: null,
+  id: null,
+  nombre: null,
+  path: null,
+  uid: null,
+};  */
+
+
 
 const reducerAuth = (state=initialState,{type,payload})=>{
     switch(type){
