@@ -3,7 +3,7 @@ import {oneQuestionLoadSucces , oneQuestionLoadError} from "../../actions/OneQue
 import { myQuestionsLoadSucces, myQuestionsLoading,myQuestionsLoadError } from "../../actions/MyQuestionsActions";
 import axios from "axios";
 
-import { loggedAction } from "../../actions/AuthorActions";
+import { loggedAction, loginAction } from "../../actions/AuthorActions";
 
 
 export const loadAllQuestion=()=>(dispatch)=>{
@@ -77,7 +77,7 @@ export const deleteQuestion=(id)=>{
     const options = {method: 'DELETE', url: `http://localhost:8080/delete/${id}`};
 
         axios.request(options).then(function (response) {
-        console.log(response.data);
+
         }).catch(function (error) {
         console.error(error);
         });
@@ -102,20 +102,30 @@ export const getUserQuestion=(userId)=>(dispatch)=>{
 
 
 //crear usuario
-export const postUser = (data) => {
+export const postUser = (data, toast) => (dispatch) => {
   const options = {
     method: "POST",
     url: "http://localhost:8080/createUsuario",
     headers: { "Content-Type": "application/json" },
     data: data,
   };
-  const result = axios
+  axios
     .request(options)
     .then(function (response) {
+      const { apellido, email, id, nombre, path, uid } = response.data;
+      dispatch(loginAction(apellido, email, id, nombre, path, uid));
+      toast.success("Logueado con Correo Correctamente", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       return response.data;
     })
     .catch(function (error) {});
-  return result;
 };
 
 

@@ -1,12 +1,17 @@
-import {loginAction} from "../../actions/AuthorActions"
 import { app, google } from "../../service/firebase"
 import { postUser } from "../../app/middleware/payloadQuestions"
-import {  useDispatch ,useSelector  } from "react-redux"
+import {  useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import React from 'react';
 import { useState } from "react"
 import useFormData from '../../hooks/UseFormData'
 import { IMGDEFAULT } from "../../utils/NavbarList"
+import { toast } from 'react-toastify';
+import { CORREO_EXISTENTE,
+  CORREO_PASS_CORTO,
+  CORREO_PASS_INCORRECTO,
+  CORREO_NO_EXISTE,
+BLOQUEO_CUENTA } from "../../utils/NavbarList"
 
 export const Login = () => {
 
@@ -25,13 +30,7 @@ export const Login = () => {
         email:user.user.multiFactor.user.email,
         path:user.user.multiFactor.user.photoURL
       }
-      const datosBD = await postUser(data);
-      dispatch(loginAction(datosBD.apellido,
-          datosBD.email,
-          datosBD.id,
-          datosBD.nombre,
-          datosBD.path,
-          datosBD.uid))
+      dispatch(postUser(data,toast))
       navigate("/private/Home")
     })
     .catch()
@@ -42,75 +41,58 @@ export const Login = () => {
   const submitForm = (e) => {
   e.preventDefault();
 
-
   if (e.target.lastChild.name==="registrar") {
-  app.auth().createUserWithEmailAndPassword(formData.email,formData.password)
+    app.auth().createUserWithEmailAndPassword(formData.email,formData.password)
     .then(async user =>{
-      let data = {
-        uid:user.user.multiFactor.user.uid,
-        nombre:"",
-        apellido:"",
-        email:user.user.multiFactor.user.email,
-        path:IMGDEFAULT
-      }
-
-
-      const datosBD = await postUser(data);
-      console.log("datosdb",datosBD);
-      if (datosBD.id) {
-        dispatch(loginAction(
-          datosBD.apellido,
-          datosBD.email,
-          datosBD.id,
-          datosBD.nombre,
-          datosBD.path,
-          datosBD.uid))
-        navigate("/private/Home")
-      }
-
-/*  toast.success("Creado Correctamente", {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      }); */
-
-
+      correoCorrecto(user);
     })
-    .catch(error=>console.log("error",error))
-
-
-
-
+    .catch(error=>{
+      if (error.message===CORREO_EXISTENTE) {
+         mensaje('Correo ya existe!');
+      }else if(error.message===CORREO_PASS_CORTO) {
+        mensaje('Contraseña debe de ser mayor de 6 Caracteres');
+      }
+    })
 
   } else {
 
-  app.auth().signInWithEmailAndPassword(formData.email,formData.password)
-    .then(async user =>{
-      let data = {
-        uid:user.user.multiFactor.user.uid,
-        nombre:"",
-        apellido:"",
-        email:user.user.multiFactor.user.email,
-        path:IMGDEFAULT
-      }
-      const datosBD = await postUser(data);
-      if (datosBD.id) {
-        dispatch(loginAction(datosBD.user.apellido,
-          datosBD.user.email,
-          datosBD.user.id,
-          datosBD.user.nombre,
-          datosBD.user.path,
-          datosBD.user.uid))
-      navigate("/private/Home")
-      }
-    })
-    .catch(error=>console.log("error",error))
+    app.auth().signInWithEmailAndPassword(formData.email,formData.password)
+      .then(async user =>{correoCorrecto(user)})
+      .catch(error=>{
+        if (error.message===CORREO_PASS_INCORRECTO)
+          mensaje('Password incorrecto');
+        else if (error.message===CORREO_NO_EXISTE)
+          mensaje("Correo no existe!");
+      })
   }
 }
+
+  const correoCorrecto= (user)=>{
+    let data = {
+      uid:user.user.multiFactor.user.uid,
+      nombre:"",
+      apellido:"",
+      email:user.user.multiFactor.user.email,
+      path:IMGDEFAULT
+    }
+    dispatch(postUser(data,toast))
+    navigate("/private/Home")
+  }
+
+  const mensaje=(texto)=>{
+    toast.error(texto, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
+
+
+
 
   return (
   <>
@@ -145,4 +127,6 @@ export const Login = () => {
     </div>
   </>
   )
+
+
 }
