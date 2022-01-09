@@ -17,12 +17,12 @@ const FormQuestion = () => {
         }
 
     return(
-        <section>
+        <section className="formulario">
             {state?.user?
             <>
-            <h1>Este es un fomulario de question.</h1>
+            <h1>Formulario de Preguntas</h1>
             <form ref={form} onSubmit={submitForm} onChange={updateFormData}>
-            <label>Añadir nueva pregunta</label>
+            <label>Pregunta: </label>
             <input required name="question" type="text" placeholder='Ingresa una pregunta acá'></input>
 
             <input hidden name="email" type="text" defaultValue={state.user.email}></input>

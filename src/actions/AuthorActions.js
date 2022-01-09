@@ -8,10 +8,10 @@ export const loginAction = (apellido, email, id, nombre, path, uid) => {
 };
 
 export const logoutAction =()=>{
-    return{
-        type : actionsTypesAuth.LOGOUT,
-        payload: null
-    }
+  return{
+    type : actionsTypesAuth.LOGOUT,
+    payload: null
+  }
 }
 
 export const loggedAction = (apellido, email, id, nombre, path, uid) => {

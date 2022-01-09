@@ -15,9 +15,9 @@ const QuestionsPagePublic = () => {
   
     
     return (
-        <section>
-        {isLoading && <h1> Cargando preguntas </h1>}
-            {error && <h1> Error {error} </h1>}
+        <section className="pagina">
+        {isLoading && <h3> Cargando preguntas </h3>}
+            {error && <h3> Error {error} </h3>}
             {questions && questions.map((question)=>{
                 return(
                     <QuestionPublic key={question.id} question={question}/>

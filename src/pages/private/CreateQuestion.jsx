@@ -3,7 +3,7 @@ import FormQuestion from '../../components/private/FormQuestion'
 
 const CreateQuestion = () => {
     return (
-        <section>
+        <section className='pagina-formulario'>
             <FormQuestion/>
         </section>
     )

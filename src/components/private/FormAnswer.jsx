@@ -18,10 +18,10 @@ const FormAnswer = ({idQuestion}) => {
   }
 
   return(
-    <section>
+    <section className='form-answer'>
       <form  onSubmit={submitForm} >
-        <label>Añade una respuesta.</label>
-          <ReactQuill  className=" bg-white"
+        <h3>Escribe una Respuesta</h3>
+          <ReactQuill  className="texto-enrriquecido"
             modules={modules}
             formats={formats}
             value={data}
@@ -29,7 +29,7 @@ const FormAnswer = ({idQuestion}) => {
           </ReactQuill>
         <input hidden id="userId" type="text" value={state.user.uid} ></input>
         <input hidden id="questionId" type="text" value={idQuestion} ></input>
-        <button className="button" type="submit">Enviar Respuesta</button>
+        <button className="button margin-top" type="submit">Enviar Respuesta</button>
       </form>
     </section>
   )

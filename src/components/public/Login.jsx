@@ -95,14 +95,24 @@ export const Login = () => {
 
 
   return (
-  <>
-    <input type="radio" id="html" defaultChecked name="Login/registrar" onChange={()=>{setEstado(true)}} value="Login"/>
-    <label>Login</label>
-    <input type="radio" id="css" name="Login/registrar" onChange={()=>        {setEstado  (false)}} value="Registrar"/>
-    <label>Registrar</label>
 
-    <section>
-      <form ref={form} onSubmit={submitForm} onChange={updateFormData}>
+  <section className="formulario-L">
+    <div className="doscolumnas">
+      <div className="colum-L">
+        <label>Login</label>
+        <input type="radio" id="html" defaultChecked name="Login/registrar" onChange={()=>{setEstado(true)}} value="Login"/>
+      </div>
+      <div className="colum-L">
+        <label>Registrar</label>
+        <input type="radio" id="css" name="Login/registrar" onChange={()=>{setEstado  (false)}} value="Registrar"/>
+      </div>
+    </div>
+
+    
+
+
+    
+    <form ref={form} onSubmit={submitForm} onChange={updateFormData}>
       {estado ?
       <>
         <h1>Login</h1>
@@ -110,9 +120,10 @@ export const Login = () => {
       <>
         <h1>Registrar</h1>
       </>}
-      <label>Ingresa tus daos</label>
-      <input required name="email" type="text" placeholder='Ingresa Correo'></input>
-      <input required name="password" type="text" placeholder='Ingrese pass' ></input>
+      <label>Correo</label>
+      <input className="input" required name="email" type="text" placeholder='Ingresa Correo'></input>
+      <label>Pass</label>
+      <input className="input" required name="password" type="text" placeholder='Ingrese pass' ></input>
       {estado ?
       <>
         <button className="button" name="login" type="submit">Login con Correo</button>
@@ -121,11 +132,18 @@ export const Login = () => {
         <button className="button" name="registrar" type="submit">Registrar con Correo</button>
       </>}
       </form>
-    </section>
+    
+
+
+
+
     <div>
+
+
+
       <button className="button" onClick={handlerLog}>Ingresar con Google</button>
     </div>
-  </>
+ </section>
   )
 
 

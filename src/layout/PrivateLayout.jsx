@@ -23,10 +23,10 @@ const PrivateLayout = () => {
   return (
     <>
       {state?.user
-        ?(<div>
+        ?(<>
           <Navbar elements={privateNavbar}/>
           <Outlet/>
-        </div>)
+        </>)
         :
         null}
     </>

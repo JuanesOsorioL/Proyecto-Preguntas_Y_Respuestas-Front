@@ -15,9 +15,9 @@ const submitForm = (e) => {
   dispatch(ActualizarUser(formData))
 }
   return (
-  <section>
+  <section className="formulario">
     <form ref={form} onSubmit={submitForm} onChange={updateFormData}>
-      <h1>Registrar</h1>
+      <h1>Actualizar</h1>
       <label>Nombre: </label>
       <input required name="nombre" type="text" defaultValue={state.user.nombre}></input>
       <label>Apellido: </label>

@@ -11,12 +11,10 @@ const QuestionsPagePrivate = () => {
 
     useEffect(()=>{
       dispatch(loadAllQuestion())
-      console.log(questions);
     },[])
-  
-    
+
     return (
-        <section>
+        <section className="pagina">
         {isLoading && <h1> Cargando preguntas </h1>}
             {error && <h1> Error {error} </h1>}
             {questions && questions.map((question)=>{

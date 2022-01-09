@@ -21,6 +21,7 @@ import { Login } from './components/public/Login';
 import React from 'react';
 import Actualizar from './pages/private/Actualizar';
 import { getUserByUid } from './app/middleware/payloadQuestions';
+import FormQuestion from './components/private/FormQuestion';
 
 
 function App() {
@@ -51,7 +52,8 @@ function App() {
               <Route path="ActualizarNombre" element={<Actualizar/>}/>
               <Route path="QuestionsPage" element={<QuestionsPagePrivate/>}/>
               <Route path="Question/:id" element={<OneQuestionPagePrivate/>}/>
-              <Route path="CreateQuestion" element={<CreateQuestion/>}/>
+               <Route path="CreateQuestion" element={<FormQuestion/>}/>
+             {/*  <Route path="CreateQuestion" element={<CreateQuestion/>}/> */}
               <Route path="CreateQuestion/Question/:id" element={<OneQuestionPagePrivate/>}/>
               <Route path="MyQuestions" element={<MyQuestions/>}/>
           </Route>
@@ -62,6 +64,4 @@ function App() {
     </>
   );
 }
-
-
 export default App;

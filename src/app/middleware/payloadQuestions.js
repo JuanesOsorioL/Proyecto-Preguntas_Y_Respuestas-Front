@@ -156,3 +156,26 @@ export const ActualizarUser = (data) => (dispatch) => {
     })
     .catch(function (error) {});
 };
+
+//borrar respuesta
+export const deleteAnswer = (id, toast) => {
+  const options = {
+    method: "DELETE",
+    url: `http://localhost:8080/delete/${id}`,
+  };
+  axios
+    .request(options)
+    .then(function (response) {
+      toast.success("Pregunta Borrada ", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    })
+    .catch(function (error) {
+    });
+};
