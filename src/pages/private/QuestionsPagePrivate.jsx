@@ -11,6 +11,7 @@ const QuestionsPagePrivate = () => {
 
     useEffect(()=>{
       dispatch(loadAllQuestion())
+      console.log(questions);
     },[])
   
     

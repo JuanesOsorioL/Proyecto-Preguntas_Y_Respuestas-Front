@@ -5,19 +5,19 @@ import {useEffect} from'react'
 import { useParams } from "react-router-dom";
 import FormAnswer from "../../components/private/FormAnswer";
 import ViewAnswer from "../../components/private/ViewAnswer";
-import React from 'react';
+import React,{useState} from 'react';
 
 const OneQuestionPagePrivate = () => {
     const {id}=useParams();
     
-
     const dispatch = useDispatch()
     const {oneQuestion} = useSelector(state => state.oneQuestion)
 
     useEffect(()=>{
       dispatch(loadById(id))
     },[])
-    console.log("aparece ", oneQuestion);
+
+    
 
     return (
         <section>  
@@ -26,10 +26,10 @@ const OneQuestionPagePrivate = () => {
                  <OneQuestionPrivate oneQuestion={oneQuestion}/>
                  {oneQuestion.answers&&oneQuestion.answers.map((answer)=>{
                      return(
-                         <ViewAnswer key={answer.id} answer={answer} />
+                         <ViewAnswer key={answer.userId} answer={answer} />
                      )
                  }) }
-                 <FormAnswer idQuestion={oneQuestion.id}></FormAnswer>
+                 <FormAnswer idQuestion={oneQuestion.id} ></FormAnswer>
             </>     
             }
             

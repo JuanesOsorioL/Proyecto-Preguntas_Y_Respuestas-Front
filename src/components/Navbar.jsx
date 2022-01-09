@@ -33,12 +33,27 @@ const dispatch = useDispatch()
     return (
         <nav>
             <section >
+               <nav class="navbar navbar-light bg-light">
+                <div class="container-fluid">
+                    <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+                </nav>
+
+
                 {
                     elements.map((element,index)=>{
                     return (<Link key={index} to={element.url}>{element.titulo}</Link>)
                     })
                 }
                 {state.user&&<button className="button" onClick={handler}>Log-out</button>}
+
+                
+
+
+
                 <ToastContainer
                 position="top-right"
                 autoClose={5000}

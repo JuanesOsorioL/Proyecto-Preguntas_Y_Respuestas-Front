@@ -1,17 +1,20 @@
 import useFormData from '../../hooks/UseFormData'
 import { postAnswer } from '../../app/middleware/payloadQuestions';
-import { useSelector } from 'react-redux';
 import React from 'react';
+import { useDispatch,useSelector } from "react-redux";
 
 const FormAnswer = ({idQuestion}) => {
 
     const state =useSelector(state=>state.auth)
-
+const dispatch = useDispatch()
     const{form, formData, updateFormData} = useFormData();
 
     const submitForm = (e) => {
         e.preventDefault();
-        postAnswer(formData)
+      //  console.log("data",formData);
+      dispatch(postAnswer(formData))
+        
+       
       }
 
     return(

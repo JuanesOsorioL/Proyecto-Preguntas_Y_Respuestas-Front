@@ -2,15 +2,14 @@ import { Link } from "react-router-dom"
 import React from 'react';
 
 const OneQuestionPrivate = ({oneQuestion}) => {
-console.log(oneQuestion);
     return(
         <section className='question'>
-            <p>{oneQuestion.category}  - <small>{oneQuestion.type}</small></p>
-            
+            <h2>{oneQuestion.question}</h2>
+            <p><small>Categoria: </small> {oneQuestion.category}<br></br>
+            <small>Tipo: </small>{oneQuestion.type}</p>
             {/* {onDelete && (
                 <button className="button right" onClick={() => onDelete(question.id)}>DELETE</button>
             )} */}
-        
         </section>
     )
 }

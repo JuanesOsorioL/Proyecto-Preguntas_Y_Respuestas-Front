@@ -14,7 +14,7 @@ const FormQuestion = () => {
         e.preventDefault();
         const a = await postQuestion(formData)
         navigate("Question/"+a);
-      }
+        }
 
     return(
         <section>
@@ -24,6 +24,8 @@ const FormQuestion = () => {
             <form ref={form} onSubmit={submitForm} onChange={updateFormData}>
             <label>Añadir nueva pregunta</label>
             <input required name="question" type="text" placeholder='Ingresa una pregunta acá'></input>
+
+            <input hidden name="email" type="text" defaultValue={state.user.email}></input>
 
             <input  required name="userId" hidden type="text" value={state.user.uid} placeholder='Ingresa una pregunta acá'></input>
 

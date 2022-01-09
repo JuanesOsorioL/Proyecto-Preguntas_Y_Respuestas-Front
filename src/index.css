@@ -68,6 +68,10 @@ textarea {
   resize: none;
 }
 
+.question {
+    background-color: gray;
+}
+
 .question h2 {
   font-size: 2.5rem;
 }

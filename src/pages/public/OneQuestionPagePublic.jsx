@@ -17,7 +17,7 @@ const OneQuestionPagePublic = () => {
       console.log(oneQuestion)
     },[])
   
-    return (    
+    return (
         <section>
         {oneQuestion&&(
         <>
