@@ -68,15 +68,19 @@ export const postAnswer = (userId, questionId, data) => (dispatch) => {
     });
 };
 
-export const deleteQuestion=(id)=>{
-  const options = {method: 'DELETE', url: `http://localhost:8080/delete/${id}`};
+///borrar preguntas
+export const deleteQuestion=(id,iduser)=>(dispatch)=>{
+  const options = {
+    method: 'DELETE',
+    url: `http://localhost:8080/delete/${id}`};
   axios.request(options)
-  .then(function (response) {})
+  .then(function (response) {
+    dispatch(getUserQuestion(iduser));
+  })
   .catch(function (error) {console.error(error)});
 }
 
 export const getUserQuestion=(userId)=>(dispatch)=>{
-
   dispatch(myQuestionsLoading())
     const options = {
         method: 'GET',
@@ -89,7 +93,6 @@ export const getUserQuestion=(userId)=>(dispatch)=>{
         dispatch(myQuestionsLoadError(error.message));
       });
 }
-
 //crear usuario
 export const postUser = (data, toast) => (dispatch) => {
   const options = {
@@ -116,7 +119,6 @@ export const postUser = (data, toast) => (dispatch) => {
     })
     .catch(function (error) {});
 };
-
 
 //se loguea para todo
 export const getUserByUid = (userUid) => (dispatch) => {
@@ -161,7 +163,7 @@ export const ActualizarUser = (data) => (dispatch) => {
 export const deleteAnswer = (id, toast) => {
   const options = {
     method: "DELETE",
-    url: `http://localhost:8080/delete/${id}`,
+    url: `http://localhost:8080/deleteAnswear/${id}`,
   };
   axios
     .request(options)

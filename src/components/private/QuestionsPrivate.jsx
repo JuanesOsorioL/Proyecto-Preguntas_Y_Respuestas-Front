@@ -1,12 +1,21 @@
 import { Link } from "react-router-dom"
 import React from 'react';
-
+import { useDispatch } from "react-redux"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
+import { deleteQuestion } from "../../app/middleware/payloadQuestions";
 
 const element = <FontAwesomeIcon icon={faQuestionCircle}  size="6x" />
 
-const QuestionsPrivate = ({question}) => {  
+const QuestionsPrivate = ({question}) => {
+
+  const dispatch = useDispatch()
+
+  const eliminarPregunta=()=>{
+    /* console.log(question);
+    console.log(question.id, question.userId); */
+    dispatch(deleteQuestion(question.id, question.userId))
+  }
 
   return(
     <div className='question-public'>
@@ -23,9 +32,10 @@ const QuestionsPrivate = ({question}) => {
           )} */}
         </div>
         <div className="colum-3Q">
-          <Link to={`/private/question/${question.id}`} className="button">
+          <Link to={`/private/question/${question.id}`} className="button-view">
                 View Question
           </Link>
+          <button type="button" className="btn btn-danger" onClick={()=>{eliminarPregunta()}}>Eliminar</button>
         </div>
       </div>
     </div>

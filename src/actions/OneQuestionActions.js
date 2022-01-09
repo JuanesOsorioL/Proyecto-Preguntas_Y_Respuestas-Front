@@ -8,6 +8,8 @@ export const oneQuestionLoadSucces=(question)=>{
     }
 }
 
+
+
 export const oneQuestionLoadError=(error)=>{
     return {
         type:ActionsTypeOneQuestion.LOAD_FAILURE_QUESTION,

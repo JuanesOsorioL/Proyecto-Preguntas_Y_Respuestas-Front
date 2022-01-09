@@ -109,6 +109,21 @@ textarea {
   padding: 0.75rem 1.5rem;
 }
 
+.button-view {
+  display: inline-block;
+  background: #45bb0e;
+  color: white;
+  border-radius: 4px;
+  padding: .375rem 0.75rem;
+  margin-bottom: 10px;
+}
+.button-view:hover {
+   background: #3ea80c;
+  color: white;
+}
+
+
+
 .right {
   float: right;
 }

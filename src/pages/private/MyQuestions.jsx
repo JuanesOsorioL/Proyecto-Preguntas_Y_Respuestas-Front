@@ -16,7 +16,6 @@ const MyQuestions = () => {
     
     useEffect(() =>{
         dispatch(getUserQuestion(user.uid));
-       console.log(myQuestions)
     },[])
 
     return (
@@ -26,11 +25,8 @@ const MyQuestions = () => {
                 <QuestionsPrivate key={question.id} question={question}/>
                 )
         })}
-        
-        
-        
-        {isLoading && <h1> Cargando preguntas </h1>}
-            {error && <h1> Error {error} </h1>}
+        {isLoading && <h3> Cargando preguntas </h3>}
+            {error && <h3> Error {error} </h3>}
 
         </section>
     )

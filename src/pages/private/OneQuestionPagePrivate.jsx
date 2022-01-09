@@ -17,8 +17,6 @@ const OneQuestionPagePrivate = () => {
     dispatch(loadById(id))
     
   },[])
-console.log(oneQuestion);
-    console.log(state);
 
 
   return (
