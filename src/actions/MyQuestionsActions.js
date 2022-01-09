@@ -13,12 +13,12 @@ export const myQuestionsLoadSucces=(questions)=>{
   }
 }
 
-export const myQuestionsDeleteSucces = (questions) => {
+/* export const myQuestionsDeleteSucces = (questions) => {
   return {
     type: actionsTypesMyQuestion.DELETE_SUCCESS_MY_QUESTIONS,
     payload: questions,
   };
-};
+}; */
 
 export const myQuestionsLoadError=(error)=>{
   return {

@@ -4,7 +4,7 @@ export const publicNavbar = [
     url: "/",
   },
   {
-    titulo: "Questions",
+    titulo: "Preguntas",
     url: "QuestionsPage",
   },
   {
@@ -19,19 +19,19 @@ export const privateNavbar = [
     url: "Home",
   },
   {
-    titulo: "Questions",
+    titulo: "Preguntas",
     url: "QuestionsPage",
   },
   {
-    titulo: "New",
+    titulo: "Nueva Pregunta",
     url: "CreateQuestion",
   },
   {
-    titulo: "list",
+    titulo: "Mis Preguntas",
     url: "MyQuestions",
   },
   {
-    titulo: "Actualizar",
+    titulo: "Perfil",
     url: "ActualizarNombre",
   },
 ];

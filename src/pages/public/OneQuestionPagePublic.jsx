@@ -7,29 +7,28 @@ import ViewAnswer from "../../components/private/ViewAnswer";
 import React from 'react';
 
 const OneQuestionPagePublic = () => {
-    const {id}=useParams();
 
-    const dispatch = useDispatch()
-    const {oneQuestion} = useSelector(state => state.oneQuestion)
+  const {id}=useParams();
+  const dispatch = useDispatch()
+  const {oneQuestion} = useSelector(state => state.oneQuestion)
 
-    useEffect(()=>{
-      dispatch(loadById(id))
-      console.log(oneQuestion)
-    },[])
-  
-    return (
-        <section>
-        {oneQuestion&&(
+  useEffect(()=>{
+    dispatch(loadById(id))
+  },[])
+
+  return (
+    <section className="pagina">
+      {oneQuestion&&(
         <>
-        <OneQuestionPublic question={oneQuestion}/>
-        {oneQuestion.answers.map((answer,index)=>{
-                return(
-                    <ViewAnswer key={index} answer={answer} ></ViewAnswer>
-                )})}
+          <OneQuestionPublic question={oneQuestion}/>
+          {oneQuestion.answers.map((answer,index)=>{
+            return(
+              <ViewAnswer key={index} answer={answer} ></ViewAnswer>
+            )})}
         </>
-        )}
-        </section>
-    )
+      )}
+    </section>
+  )
 }
 
 export default OneQuestionPagePublic;

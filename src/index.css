@@ -12,25 +12,15 @@ p {
 }
 
 nav {
-  /* width: 100%; */
-  /* padding: 2rem 0; */
   height: 80px;
   background: #111;
 }
-
-/* nav section {
-  width: 100%;
-} */
 
 nav a {
   font-weight: 700;
   padding: 1rem 1.5rem;
   border-radius: 4px;
 }
-
-/* nav a:first-of-type {
-  margin-left: -1.5rem;
-} */
 
 nav a:hover {
   background: #222;
@@ -40,14 +30,6 @@ a {
   color: #ea3546;
   text-decoration: none;
 }
-
-/* section {
-  max-width: 800px;
-  margin: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 1.5rem;
-} */
 
 section h1 {
   font-size: 3rem;
@@ -122,8 +104,6 @@ textarea {
   color: white;
 }
 
-
-
 .right {
   float: right;
 }
@@ -145,9 +125,9 @@ textarea {
 }
 
 .contendornavbar {
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 .colum-1 i {
   color: #ea3546;
@@ -157,12 +137,9 @@ textarea {
 
 .colum-1  {
   width: calc(8.3% * 2);
-  /* margin:10px; */
   padding-top: 5px;
   color: #ea3546;
   text-align: center;
- /*  width: 100px;
-  height: 100px; */
 }
 .colum-2 {
   margin-top: 30px;
@@ -173,9 +150,6 @@ textarea {
   width: calc(8.3% * 2);
 }
 
-
-
-
 .quill-editor {
   width: 850px;
   margin: auto;
@@ -184,14 +158,11 @@ textarea {
 
 .visualizador {
   color: rgb(0, 0, 0);
-  	margin-top: 0.75rem;
-    background-color: rgb(143, 143, 143);
+  margin-top: 0.75rem;
+  background-color: rgb(143, 143, 143);
 }
 
-
-
 /* form answer */
-
 .form-answer {
   padding: 11px;
   color: rgb(0, 0, 0);
@@ -208,14 +179,11 @@ textarea {
   margin-top: 10px;
 }
 
-
-
-
 /* ////// */
 .pagina{
   padding-top: 10px;
   margin: 0px 10% 0px 10%;
-  background: rgb(255, 22, 22);
+  /* background: rgb(255, 22, 22) */;
 }
 
 .question-public{
@@ -234,18 +202,16 @@ textarea {
 }
 
 .colum-1Q {
-  width: calc(8.3% * 1);
+  width: calc(8.3% * 2);
 }
 .colum-2Q {
   width: calc(8.3% * 8);
 }
 .colum-3Q {
-  width: calc(8.3% * 3);
+  width: calc(8.3% * 2);
   margin: auto;
 }
 
-
-/* ///// */
 /* //formulario */
 .pagina-formulario {
   padding-top: 10px;
@@ -271,7 +237,6 @@ text-align:left;
 }
 .colum-L {
   width: calc(8.3% * 6);
-
 }
 
 .formulario-L {
@@ -289,6 +254,9 @@ text-align:left;
   width: 50%;
 }
 
-
-
-
+.colum-RA {
+  width: calc(8.3% * 10.5);
+}
+.colum-RB {
+  width: calc(8.3% *1.5);
+}

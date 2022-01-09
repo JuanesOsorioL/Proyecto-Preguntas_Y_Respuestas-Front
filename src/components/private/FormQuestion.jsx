@@ -24,11 +24,8 @@ const FormQuestion = () => {
             <form ref={form} onSubmit={submitForm} onChange={updateFormData}>
             <label>Pregunta: </label>
             <input required name="question" type="text" placeholder='Ingresa una pregunta acá'></input>
-
             <input hidden name="email" type="text" defaultValue={state.user.email}></input>
-
             <input  required name="userId" hidden type="text" value={state.user.uid} placeholder='Ingresa una pregunta acá'></input>
-
             <label className=" font-medium">Type</label>
             <select required className="" name="type" defaultValue="Type">
             <option disabled type="String" value="type">Type</option>

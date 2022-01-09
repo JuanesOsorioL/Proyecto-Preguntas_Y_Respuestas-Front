@@ -6,30 +6,29 @@ import React from 'react';
 
 
 const MyQuestions = () => {
-    const dispatch = useDispatch()
-    const {user}=useSelector(state=>state.auth)
-    const {
-        isLoading,
-        myQuestions,
-        error
-    } = useSelector(state => state.myQuestion)
-    
-    useEffect(() =>{
-        dispatch(getUserQuestion(user.uid));
-    },[])
+  const dispatch = useDispatch()
+  const {user}=useSelector(state=>state.auth)
+  const {
+    isLoading,
+    myQuestions,
+    error
+  } = useSelector(state => state.myQuestion)
 
-    return (
-        <section>
-        {myQuestions && myQuestions.map((question)=>{
-            return(
-                <QuestionsPrivate key={question.id} question={question}/>
-                )
-        })}
-        {isLoading && <h3> Cargando preguntas </h3>}
-            {error && <h3> Error {error} </h3>}
+  useEffect(() =>{
+    dispatch(getUserQuestion(user.uid));
+  },[])
 
-        </section>
-    )
+  return (
+    <section>
+  {/* {isLoading && <h3> Cargando preguntas </h3>}
+            {error && <h3> Error {error} </h3>} */}
+      {myQuestions && myQuestions.map((question)=>{
+        return(
+          <QuestionsPrivate key={question.id} question={question} mostrar={true}/>
+        )
+      })}
+    </section>
+  )
 }
 
 export default MyQuestions

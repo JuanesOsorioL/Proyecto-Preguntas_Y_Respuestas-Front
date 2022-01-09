@@ -19,7 +19,6 @@ export const Login = () => {
   const dispatch = useDispatch()
   const navigate=useNavigate()
 
-  //cuenta de google
   const handlerLog=()=>{
     app.auth().signInWithPopup(google)
     .then(async user =>{
@@ -36,7 +35,6 @@ export const Login = () => {
     .catch()
   }
 
-////form
   const{form, formData, updateFormData} = useFormData();
   const submitForm = (e) => {
   e.preventDefault();
@@ -48,7 +46,7 @@ export const Login = () => {
     })
     .catch(error=>{
       if (error.message===CORREO_EXISTENTE) {
-         mensaje('Correo ya existe!');
+        mensaje('Correo ya existe!');
       }else if(error.message===CORREO_PASS_CORTO) {
         mensaje('Contraseña debe de ser mayor de 6 Caracteres');
       }
@@ -91,9 +89,6 @@ export const Login = () => {
     });
   }
 
-
-
-
   return (
 
   <section className="formulario-L">
@@ -107,11 +102,6 @@ export const Login = () => {
         <input type="radio" id="css" name="Login/registrar" onChange={()=>{setEstado  (false)}} value="Registrar"/>
       </div>
     </div>
-
-    
-
-
-    
     <form ref={form} onSubmit={submitForm} onChange={updateFormData}>
       {estado ?
       <>
@@ -132,19 +122,9 @@ export const Login = () => {
         <button className="button" name="registrar" type="submit">Registrar con Correo</button>
       </>}
       </form>
-    
-
-
-
-
     <div>
-
-
-
       <button className="button" onClick={handlerLog}>Ingresar con Google</button>
     </div>
  </section>
   )
-
-
 }

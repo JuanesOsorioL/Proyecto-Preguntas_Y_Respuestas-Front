@@ -10,6 +10,7 @@ const ViewAnswer = ({answer,eliminar}) => {
 
 const Swal = require('sweetalert2')
 const dispatch = useDispatch()
+
 const Fun_eliminar=()=>{
   Swal.fire({
     title: 'Alerta!',
@@ -28,11 +29,17 @@ const Fun_eliminar=()=>{
 }
 
   return(
-    <div className='visualizador'>
-      <ReactQuill value={answer.answer}
+    <div className='visualizador doscolumnas'>
+      <div className='colum-RA'>
+        <ReactQuill value={answer.answer}
         modules={modules}
         readOnly='true'/>
-        {eliminar&& <span onClick={()=>{Fun_eliminar()}}>Eliminar</span>}
+      </div>
+        {eliminar&&
+        <div className='colum-RB'>
+        <button className="button" onClick={()=>{Fun_eliminar()}} type="submit">Eliminar</button>
+        </div>
+        }
     </div>
   )
 }

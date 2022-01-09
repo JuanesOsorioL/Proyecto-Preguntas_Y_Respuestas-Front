@@ -4,17 +4,28 @@ import { useDispatch } from "react-redux"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 import { deleteQuestion } from "../../app/middleware/payloadQuestions";
+import { toast } from 'react-toastify';
 
-const element = <FontAwesomeIcon icon={faQuestionCircle}  size="6x" />
+const QuestionsPrivate = ({question, mostrar}) => {
 
-const QuestionsPrivate = ({question}) => {
-
+  const element = <FontAwesomeIcon icon={faQuestionCircle}  size="6x" />
+  const Swal = require('sweetalert2')
   const dispatch = useDispatch()
 
   const eliminarPregunta=()=>{
-    /* console.log(question);
-    console.log(question.id, question.userId); */
-    dispatch(deleteQuestion(question.id, question.userId))
+    Swal.fire({
+    title: 'Alerta!',
+    text: "Estas seguro que quieres eliminar esta Pregunta?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Si'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      dispatch(deleteQuestion(question.id, question.userId,toast))
+    }
+  })
   }
 
   return(
@@ -27,30 +38,17 @@ const QuestionsPrivate = ({question}) => {
             Categoria: <small>{question.category}</small><br></br>
             Tipo: <small>{question.type}</small>
           </p>
-          {/* {onDelete && (
-          <button className="button right" onClick={() => onDelete(question.id)}>DELETE</button>
-          )} */}
         </div>
         <div className="colum-3Q">
           <Link to={`/private/question/${question.id}`} className="button-view">
-                View Question
+            View Question
           </Link>
+          {mostrar &&
           <button type="button" className="btn btn-danger" onClick={()=>{eliminarPregunta()}}>Eliminar</button>
+          }
         </div>
       </div>
     </div>
-/*
-        <section className="margen">
-            <p>
-                Pregunta: <small>{question.question}</small>
-                Categoria: <small>{question.category}</small>
-                Tipo: <small>{question.type}</small>
-            </p>
-
-            <Link to={`/private/question/${question.id}`} className="button">
-                View Question
-            </Link>
-        </section> */
     )
 }
 

@@ -7,17 +7,15 @@ import { useNavigate } from "react-router-dom"
 import { app } from "../service/firebase";
 import { logoutAction } from "../actions/AuthorActions";
 import { toast } from 'react-toastify';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 
-const element = <FontAwesomeIcon icon={faQuestionCircle}  size="4x" />
-
 const Navbar = ({elements}) => {
 
-const state = useSelector(state=>state.auth)
-const dispatch = useDispatch()
-const navigate=useNavigate()
+  const element = <FontAwesomeIcon icon={faQuestionCircle}  size="4x" />
+  const state = useSelector(state=>state.auth)
+  const dispatch = useDispatch()
+  const navigate=useNavigate()
 
   const handler=()=>{
     app.auth().signOut().then(res=>{
@@ -36,7 +34,6 @@ const navigate=useNavigate()
   }
 
   return (
-
     <nav>
       <section className="contendornavbar">
         <div className="colum-1">
@@ -53,12 +50,6 @@ const navigate=useNavigate()
           {state.user &&
             <button className="button" onClick={handler}>Log-out</button>}
         </div>
-        {/* <div className="colum-1">
-          <form className="d-flex">
-            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button className="btn btn-outline-success" type="submit">Search</button>
-          </form>
-        </div> */}
         <ToastContainer
           position="top-right"
           autoClose={5000}
