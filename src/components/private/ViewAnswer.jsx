@@ -5,16 +5,17 @@ import { deleteAnswer } from '../../app/middleware/payloadQuestions';
 import { toast } from 'react-toastify';
 // ES6 Modules or TypeScript
 import Swal from 'sweetalert2'
-
+import { useDispatch} from "react-redux";
+import { loadById } from '../../app/middleware/payloadQuestions';
 
 const ViewAnswer = ({answer,eliminar}) => {
 
 const Swal = require('sweetalert2')
-
+  const dispatch = useDispatch()
 const Fun_eliminar=()=>{
 Swal.fire({
-  title: 'Are you sure?',
-  text: "You won't be able to revert this!",
+  title: 'Alerta!',
+  text: "Estas seguro que quieres eliminar Esta Respuesta?",
   icon: 'warning',
   showCancelButton: true,
   confirmButtonColor: '#3085d6',
@@ -22,17 +23,10 @@ Swal.fire({
   confirmButtonText: 'Yes, delete it!'
 }).then((result) => {
   if (result.isConfirmed) {
-    Swal.fire(
-      'Deleted!',
-      'Your file has been deleted.',
-      'success'
-    )
+      deleteAnswer(answer.id,toast)
+      dispatch(loadById(answer.questionId))
   }
 })
-
-
-  //console.log(answer);
-  //deleteAnswer(answer.id,toast)
 }
 
   return(

@@ -20,6 +20,7 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "^3.0.1",
     "react-toastify": "^8.1.0",
+    "sweetalert2": "^11.3.4",
     "unique-string": "^3.0.0",
     "uuid": "^8.3.2"
   },
