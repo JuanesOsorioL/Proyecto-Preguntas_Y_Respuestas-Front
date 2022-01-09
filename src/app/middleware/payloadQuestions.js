@@ -50,13 +50,12 @@ export const postQuestion=(question)=>{
 }
 
 
-export const postAnswer = (answer) => (dispatch) => {
-  console.log(answer);
+export const postAnswer = (userId, questionId, data) => (dispatch) => {
   const options = {
     method: "POST",
     url: "http://localhost:8080/add",
     headers: { "Content-Type": "application/json" },
-    data: answer,
+    data: { userId: userId, questionId: questionId, answer: data },
   };
 
   axios
@@ -68,25 +67,6 @@ export const postAnswer = (answer) => (dispatch) => {
       console.error(error);
     });
 };
-
-/* 
-const GetCorreoEnviar = (userUid) =>{
-  const options = {
-    method: "GET",
-    url: `http://localhost:8080/getUsuario/${userUid}`,
-    headers: { "Content-Type": "application/json" },
-  };
-  axios
-    .request(options)
-    .then(function (response) {
-      const {email} = response.data;
-      //correo
-      console.log(email);
-
-    })
-    .catch(function (error) {
-    });
-}; */
 
 export const deleteQuestion=(id)=>{
   const options = {method: 'DELETE', url: `http://localhost:8080/delete/${id}`};

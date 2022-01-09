@@ -9,30 +9,27 @@ import React from 'react';
 
 const PrivateLayout = () => {
 
-    const state = useSelector(state => state.auth)
-    const navigate=useNavigate()
+  const state = useSelector(state => state.auth)
+  const navigate=useNavigate()
 
-    useEffect(()=>{
-        app.auth().onAuthStateChanged((users)=>{
-            if(!users){
-                navigate("/")
-        }})
-      },[])
+  useEffect(()=>{
+    app.auth().onAuthStateChanged((users)=>{
+      if(!users){
+        navigate("/")
+      }
+    })
+  },[])
 
-
-
-    return (
-        <>
-        {state?.user
+  return (
+    <>
+      {state?.user
         ?(<div>
-            <Navbar elements={privateNavbar}/>
-            <Outlet/>
+          <Navbar elements={privateNavbar}/>
+          <Outlet/>
         </div>)
         :
         null}
-        </>
-       
+    </>
     )
 }
-
 export default PrivateLayout

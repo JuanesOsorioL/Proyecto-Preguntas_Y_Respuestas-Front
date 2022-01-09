@@ -1,16 +1,36 @@
 import React from 'react';
+import ReactQuill from "react-quill"
+import '../../../node_modules/react-quill/dist/quill.snow.css';
 
 const ViewAnswer = ({answer}) => {  
-//console.log(answer);
+
+const modulo={}
+
+const formats={}
+
     return(
-        <section className='question'>
-            <p>
-            {answer.answer}  - <small>{answer.position}</small>
-            
-            </p>
-        
-        </section>
+<div className=' bg-white mt-3'>
+            <ReactQuill value={answer.answer}  
+            modules={modules}   
+            readOnly='true'/>
+        </div>
+
+
+    
     )
 }
 
+/*  <section className='question'>
+            <p>
+                <ReactQuill value={answer.answer}
+                modulo={modulo}
+                formats={formats}
+                readOnly="true"/>
+            </p>
+        </section>  */
+
+
+const modules = {
+    toolbar: false
+};
 export default ViewAnswer

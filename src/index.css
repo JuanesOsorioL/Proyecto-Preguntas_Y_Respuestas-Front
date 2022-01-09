@@ -11,6 +11,7 @@ p {
 
 nav {
   display: flex;
+  flex-wrap: wrap;
   padding: 2rem 0;
   background: #111;
 }
@@ -126,4 +127,13 @@ textarea {
   margin: 15px;
 }
 
+.contendornavbar{
+  display: grid;
+}
 
+
+.quill-editor {
+  width: 850px;
+  margin: auto;
+  margin-top: 20px;
+}
