@@ -113,7 +113,7 @@ export const Login = () => {
       <label>Correo</label>
       <input className="input" required name="email" type="text" placeholder='Ingresa Correo'></input>
       <label>Pass</label>
-      <input className="input" required name="password" type="text" placeholder='Ingrese pass' ></input>
+      <input className="input" required name="password" type="password" placeholder='Ingrese pass' ></input>
       {estado ?
       <>
         <button className="button" name="login" type="submit">Login con Correo</button>
