@@ -13,9 +13,9 @@ const QuestionsPagePrivate = () => {
 
   return (
     <section className="pagina">
-      {isLoading && <h4> Cargando preguntas </h4>}
+      {isLoading && null}
       {error && <h1> Error {error} </h1>}
-      {questions && questions.map((question)=>{
+      {questions && !isLoading && questions.map((question)=>{
         return(
           <QuestionPrivate key={question.id} question={question} mostrar={false}/>
         )

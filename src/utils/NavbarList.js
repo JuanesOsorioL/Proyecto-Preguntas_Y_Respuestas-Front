@@ -20,7 +20,7 @@ export const privateNavbar = [
   }, */
   {
     titulo: "Preguntas",
-    url: "QuestionsPage",
+    url: "/private/QuestionsPage",
   },
   {
     titulo: "Nueva Pregunta",
