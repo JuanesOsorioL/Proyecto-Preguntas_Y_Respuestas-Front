@@ -52,8 +52,7 @@ function App() {
               <Route path="ActualizarNombre" element={<Actualizar/>}/>
               <Route path="QuestionsPage" element={<QuestionsPagePrivate/>}/>
               <Route path="Question/:id" element={<OneQuestionPagePrivate/>}/>
-               <Route path="CreateQuestion" element={<FormQuestion/>}/>
-             {/*  <Route path="CreateQuestion" element={<CreateQuestion/>}/> */}
+              <Route path="CreateQuestion" element={<FormQuestion/>}/>
               <Route path="CreateQuestion/Question/:id" element={<OneQuestionPagePrivate/>}/>
               <Route path="MyQuestions" element={<MyQuestions/>}/>
           </Route>

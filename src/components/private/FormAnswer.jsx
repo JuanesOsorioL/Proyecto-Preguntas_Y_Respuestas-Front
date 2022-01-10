@@ -4,6 +4,7 @@ import { useDispatch,useSelector } from "react-redux";
 import '../../../node_modules/react-quill/dist/quill.snow.css';
 import ReactQuill from "react-quill"
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const FormAnswer = ({idQuestion}) => {
 
@@ -13,8 +14,9 @@ const FormAnswer = ({idQuestion}) => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    dispatch(postAnswer(e.target.userId.value, e.target.questionId.value, data))
-    setData("")
+    console.log(e.target.userId.value, e.target.questionId.value, data);
+    dispatch(postAnswer(e.target.userId.value, e.target.questionId.value, data,toast))
+   setData("")
   }
 
   return(

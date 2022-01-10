@@ -1,16 +1,22 @@
 import { questionsLoading ,questionsLoadSucces,questionsLoadError } from "../../actions/QuestionsActions";
-import {oneQuestionLoadSucces , oneQuestionLoadError} from "../../actions/OneQuestionActions";
+import {
+  oneQuestionLoadSucces,
+  oneQuestionLoadError,
+  oneQuestionClear,
+} from "../../actions/OneQuestionActions";
 import { myQuestionsLoadSucces, myQuestionsLoading,myQuestionsLoadError } from "../../actions/MyQuestionsActions";
 import axios from "axios";
 
 import { loggedAction, loginAction } from "../../actions/AuthorActions";
 
+const BASE = "https://back-preguntas-respuestas.herokuapp.com/";
+/* const BASE = "http://localhost:8080/"; */
 
 export const loadAllQuestion=()=>(dispatch)=>{
     dispatch(questionsLoading())
     const options = {
     method: 'GET',
-    url: 'http://localhost:8080/getAll',
+    url: BASE+'getAll',
     headers: {'Content-Type': 'application/json'}
     };
     axios.request(options).then(function (response) {
@@ -20,11 +26,11 @@ export const loadAllQuestion=()=>(dispatch)=>{
     });
 }
 
-
 export const loadById=(id)=>(dispatch)=>{
+ /// dispatch(oneQuestionClear());//////////
     const options = {
         method: 'GET',
-        url: `http://localhost:8080/get/${id}`,
+        url: BASE+`get/${id}`,
         headers: {'Content-Type': 'application/json'}
         };
         axios.request(options).then(function (response) {
@@ -34,11 +40,10 @@ export const loadById=(id)=>(dispatch)=>{
         });
 }
 
-
 export const postQuestion=(question)=>{
     const options = {
       method: "POST",
-      url: "http://localhost:8080/create",
+      url: BASE+"create",
       headers: { "Content-Type": "application/json" },
       data: question,
     };
@@ -48,11 +53,11 @@ export const postQuestion=(question)=>{
       return  result;
 }
 
+export const postAnswer = (userId, questionId, data, toast) => (dispatch) => {
 
-export const postAnswer = (userId, questionId, data) => (dispatch) => {
   const options = {
     method: "POST",
-    url: "http://localhost:8080/add",
+    url: BASE+"add",
     headers: { "Content-Type": "application/json" },
     data: { userId: userId, questionId: questionId, answer: data },
   };
@@ -61,6 +66,15 @@ export const postAnswer = (userId, questionId, data) => (dispatch) => {
     .request(options)
     .then(function (response) {
       dispatch(oneQuestionLoadSucces(response.data));
+      toast.success("Respuesta Creada", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     })
     .catch(function (error) {
       console.error(error);
@@ -71,7 +85,7 @@ export const postAnswer = (userId, questionId, data) => (dispatch) => {
 export const deleteQuestion = (id, iduser, toast) => (dispatch) => {
   const options = {
     method: "DELETE",
-    url: `http://localhost:8080/delete/${id}`,
+    url: BASE+`delete/${id}`,
   };
   axios
     .request(options)
@@ -96,7 +110,7 @@ export const getUserQuestion=(userId)=>(dispatch)=>{
   dispatch(myQuestionsLoading())
     const options = {
         method: 'GET',
-        url: `http://localhost:8080/getOwnerAll/${userId}`,
+        url: BASE+`getOwnerAll/${userId}`,
         headers: {'Content-Type': 'application/json'}
       };
       axios.request(options).then(function (response) {
@@ -105,11 +119,12 @@ export const getUserQuestion=(userId)=>(dispatch)=>{
         dispatch(myQuestionsLoadError(error.message));
       });
 }
+
 //crear usuario
 export const postUser = (data, toast) => (dispatch) => {
   const options = {
     method: "POST",
-    url: "http://localhost:8080/createUsuario",
+    url: BASE+"createUsuario",
     headers: { "Content-Type": "application/json" },
     data: data,
   };
@@ -136,7 +151,7 @@ export const postUser = (data, toast) => (dispatch) => {
 export const getUserByUid = (userUid) => (dispatch) => {
   const options = {
     method: "GET",
-    url: `http://localhost:8080/getUsuario/${userUid}`,
+    url: BASE+`getUsuario/${userUid}`,
     headers: { "Content-Type": "application/json" },
   };
   axios
@@ -156,30 +171,41 @@ export const getUserByUid = (userUid) => (dispatch) => {
 };
 
 //actualizar usuario
-export const ActualizarUser = (data) => (dispatch) => {
+export const ActualizarUser = (data, toast) => (dispatch) => {
   const options = {
     method: "PUT",
-    url: "http://localhost:8080/actualizarUsuario",
+    url: BASE + "actualizarUsuario",
     headers: { "Content-Type": "application/json" },
     data: data,
   };
-  axios.request(options)
+  axios
+    .request(options)
     .then(function (response) {
-    const { apellido, email, id, nombre, path, uid } = response.data;
-    dispatch(loggedAction(apellido, email, id, nombre, path, uid));
+      const { apellido, email, id, nombre, path, uid } = response.data;
+      dispatch(loggedAction(apellido, email, id, nombre, path, uid));
+      toast.success("Datos actualizados", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     })
     .catch(function (error) {});
 };
 
 //borrar respuesta
-export const deleteAnswer = (id, toast) => {
+export const deleteAnswer = (id,questionId, toast) => (dispatch) => {
   const options = {
     method: "DELETE",
-    url: `http://localhost:8080/deleteAnswear/${id}`,
+    url: BASE + `deleteAnswear/${id}`,
   };
   axios
     .request(options)
     .then(function (response) {
+      dispatch(loadById(questionId));
       toast.success("Respuesta Borrada ", {
         position: "top-right",
         autoClose: 5000,
@@ -190,6 +216,5 @@ export const deleteAnswer = (id, toast) => {
         progress: undefined,
       });
     })
-    .catch(function (error) {
-    });
+    .catch(function (error) {});
 };

@@ -29,6 +29,7 @@ const QuestionsPrivate = ({question, mostrar}) => {
   }
 
   return(
+    
     <div className='question-public'>
       <div className="contenedor_question-public">
         <div className="colum-1Q">{element}</div>
@@ -49,6 +50,7 @@ const QuestionsPrivate = ({question, mostrar}) => {
         </div>
       </div>
     </div>
+    
     )
 }
 

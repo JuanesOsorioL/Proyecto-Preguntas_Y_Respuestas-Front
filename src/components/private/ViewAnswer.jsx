@@ -22,8 +22,8 @@ const Fun_eliminar=()=>{
     confirmButtonText: 'Si'
   }).then((result) => {
     if (result.isConfirmed) {
-        deleteAnswer(answer.id,toast)
-        dispatch(loadById(answer.questionId))
+        dispatch(deleteAnswer(answer.id,answer.questionId,toast))
+       // dispatch(loadById(answer.questionId))
     }
   })
 }

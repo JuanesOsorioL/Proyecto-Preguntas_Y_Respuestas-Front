@@ -108,17 +108,29 @@ textarea {
   float: right;
 }
 
-.footer{
-  height: 20px;
-  display: flex;
-  padding: 2rem 0;
+.footerrrr {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /*   height: 20px; */
+  /* display: flex; */
+  /*   padding: 2rem 0; */
   background: #111;
-  display: flex;
-  flex-direction: column;
+
+  /*  flex-direction: column; */
   text-align: center;
-  justify-content: center;
+  /*  justify-content: center; */
   color: white;
 }
+
+ .footer {
+   width: 100%;
+   text-align: center;
+   color: white;
+     background: #111;
+   position: fixed;
+   bottom: 0;
+ }
 
 .footer p{
   margin: 15px;
@@ -166,7 +178,7 @@ textarea {
 .form-answer {
   padding: 11px;
   color: rgb(0, 0, 0);
-  margin: 50px 5% 5px 5%;
+  margin: 50px 5% 80px 5%;
   background: rgb(80, 80, 80);
   border-radius: 10px;
 }
@@ -259,4 +271,5 @@ text-align:left;
 }
 .colum-RB {
   width: calc(8.3% *1.5);
+  margin: auto;
 }

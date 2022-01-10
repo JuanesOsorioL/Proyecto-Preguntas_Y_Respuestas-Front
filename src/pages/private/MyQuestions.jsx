@@ -19,7 +19,7 @@ const MyQuestions = () => {
   },[])
 
   return (
-    <section>
+    <section className="pagina">
   {/* {isLoading && <h3> Cargando preguntas </h3>}
             {error && <h3> Error {error} </h3>} */}
       {myQuestions && myQuestions.map((question)=>{

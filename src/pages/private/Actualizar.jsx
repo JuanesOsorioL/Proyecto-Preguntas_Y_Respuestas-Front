@@ -2,7 +2,7 @@ import React  from 'react'
 import {  useDispatch ,useSelector  } from "react-redux"
 import useFormData from '../../hooks/UseFormData'
 import { ActualizarUser } from '../../app/middleware/payloadQuestions'
-
+import { toast } from 'react-toastify'
 const Actualizar = () => {
 
 const{form, formData, updateFormData} = useFormData();
@@ -12,7 +12,7 @@ const state = useSelector(state=>state.auth)
 
 const submitForm = (e) => {
   e.preventDefault();
-  dispatch(ActualizarUser(formData))
+  dispatch(ActualizarUser(formData,toast))
 }
   return (
   <section className="formulario">
@@ -23,7 +23,11 @@ const submitForm = (e) => {
       <label>Apellido: </label>
       <input required name="apellido" type="text"defaultValue={state.user.apellido}></input>
       <label>Correo: </label>
-      <input required name="email"  type="text" placeholder='Correo' defaultValue={state.user.email} ></input>
+      <br></br>
+      <label name="email">{state.user.email}</label>
+      <br></br>
+      <br></br>
+      <input hidden name="email"  type="text" placeholder='Correo' defaultValue={state.user.email} ></input>
       <input hidden required name="id"  type="text" defaultValue={state.user.id} ></input>
       <input hidden required name="path" type="text" defaultValue={state.user.path} ></input>
       <input hidden required name="uid" type="text" placeholder='Correo' defaultValue={state.user.uid} ></input>

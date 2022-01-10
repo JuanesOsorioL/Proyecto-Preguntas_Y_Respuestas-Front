@@ -7,8 +7,14 @@ export const oneQuestionLoadSucces=(question)=>{
         payload:question
     }
 }
-
-
+///
+export const oneQuestionClear = () => {
+  return {
+    type: ActionsTypeOneQuestion.LOAD_QUESTION_CLEAR,
+    payload: null,
+  };
+};
+////
 
 export const oneQuestionLoadError=(error)=>{
     return {
