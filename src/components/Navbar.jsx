@@ -37,7 +37,8 @@ const Navbar = ({elements}) => {
     <nav>
       <section className="contendornavbar">
         <div className="colum-1">
-          {element}
+          <Link className="logo" to={"/"}>{element}</Link>
+         {/*  {element} */}
         </div>
         <div className="colum-2">
           {

@@ -1,8 +1,8 @@
 export const publicNavbar = [
-  {
+/*   {
     titulo: "Home",
     url: "/",
-  },
+  }, */
   {
     titulo: "Preguntas",
     url: "QuestionsPage",
@@ -14,10 +14,10 @@ export const publicNavbar = [
 ];
 
 export const privateNavbar = [
-  {
+/*   {
     titulo: "Home",
     url: "Home",
-  },
+  }, */
   {
     titulo: "Preguntas",
     url: "QuestionsPage",

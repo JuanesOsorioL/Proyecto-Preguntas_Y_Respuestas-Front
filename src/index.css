@@ -22,6 +22,16 @@ nav a {
   border-radius: 4px;
 }
 
+.logo{
+  background: #111;
+}
+
+.logo:hover {
+  background: #111;
+}
+
+
+
 nav a:hover {
   background: #222;
 }
@@ -99,6 +109,7 @@ textarea {
   padding: .375rem 0.75rem;
   margin-bottom: 10px;
 }
+
 .button-view:hover {
    background: #3ea80c;
   color: white;
@@ -124,12 +135,12 @@ textarea {
 }
 
  .footer {
-   width: 100%;
-   text-align: center;
-   color: white;
-     background: #111;
-   position: fixed;
-   bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background: #111;
+  position: fixed;
+  bottom: 0;
  }
 
 .footer p{
